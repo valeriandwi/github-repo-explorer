@@ -1,67 +1,39 @@
-import { Button, Collapse, Input, Skeleton } from "antd";
 import React from "react";
-import RepositoryList from "./components/repository-list";
+import SearchUserForm from "./components/search-form";
+import { useUserStore } from "@/services/stores/user.store";
 import { useGetUsers } from "@/services/api/api-hooks/user";
+import UserList from "./components/user-list";
+import NotFound from "@/components/not-found";
 
 const SearchForm: React.FC = () => {
-  const [search, setSearch] = React.useState<string>("");
+  const { data, searchValue } = useUserStore();
+  const [searchedUser, setSearchedUser] = React.useState<string>("");
+
   const {
     mutate: getUserMutate,
-    data,
     isPending: isLoading,
-  } = useGetUsers({ username: search });
+    error,
+  } = useGetUsers({ username: searchValue });
 
   const onSearchButtonClick = () => {
     getUserMutate();
+    setSearchedUser(searchValue);
   };
 
   return (
     <div className="flex flex-col space-y-4">
+      <SearchUserForm
+        onSearchButtonClick={onSearchButtonClick}
+        isLoading={isLoading}
+      />
       <div>
-        <Input
-          placeholder="Search Username..."
-          size="large"
-          className="!mb-4"
-          onChange={(e) => setSearch(e.target.value)}
-          disabled={isLoading}
-        />
-        <Button
-          size="large"
-          className="w-full bg-blue-200"
-          onClick={onSearchButtonClick}
-          loading={isLoading}
-          type="primary"
-        >
-          Search
-        </Button>
-      </div>
-      <div>
-        {data?.items && (
-          <span className="font-medium">
-            Showing users for results "{search}"
-          </span>
+        {error && <span className="text-red-500">{error.message}</span>}
+        {data?.items && data?.items?.length === 0 && (
+          <NotFound message="User Not Found" />
         )}
-        <div className="mt-2">
-          {isLoading ? (
-            <Skeleton />
-          ) : (
-            data?.items &&
-            data?.items?.length > 0 &&
-            data?.items?.map((value) => (
-              <Collapse
-                collapsible="header"
-                className="!mt-2"
-                items={[
-                  {
-                    key: "1",
-                    label: value.login,
-                    children: <RepositoryList username={value.login} />,
-                  },
-                ]}
-              />
-            ))
-          )}
-        </div>
+        {data?.items && data?.items.length > 0 && (
+          <UserList isLoading={isLoading} searchedUser={searchedUser} />
+        )}
       </div>
     </div>
   );
