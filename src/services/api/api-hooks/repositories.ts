@@ -10,6 +10,7 @@ export const useGetRepositoryPerUser = ({ username }: { username: string }) => {
       fetcher<GitHubRepositoryResponse[]>({
         url: `${GITHUB_API_URL}/users/${username}/repos`,
       }),
+    retry: false,
     enabled: !!username,
   });
 
