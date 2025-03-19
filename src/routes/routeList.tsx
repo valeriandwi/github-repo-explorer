@@ -7,4 +7,8 @@ export const PUBLIC_ROUTES = [
     path: getRouteNames(RouteNames.SEARCH),
     element: <SearchPage />,
   },
+  {
+    path: "/",
+    element: <SearchPage />,
+  },
 ];
