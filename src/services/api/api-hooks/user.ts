@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import { GitHubSearchResponse } from "../api-types/user.type";
 import { useUserStore } from "@/services/stores/user.store";
-import { GITHUB_API_URL, GITHUB_TOKEN } from "@/constants/constants";
+import { GITHUB_API_URL } from "@/constants/constants";
 import { fetcher } from "../fetcher";
 
 export const useGetUsers = ({
