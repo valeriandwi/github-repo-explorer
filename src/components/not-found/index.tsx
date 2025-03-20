@@ -8,7 +8,10 @@ interface NotFoundProps {
 
 const NotFound: React.FC<NotFoundProps> = ({ message }) => {
   return (
-    <div className="flex justify-center items-center flex-col">
+    <div
+      className="flex justify-center items-center flex-col"
+      data-testid="not-found"
+    >
       <NotFoundIcon />
       <Typography>{message}</Typography>
     </div>

@@ -1,0 +1,41 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`App Component > matches the snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="flex flex-row justify-center p-4"
+  >
+    <div
+      class="ant-card ant-card-bordered lg:w-1/2 max-md:w-full md:w-3/4 css-dev-only-do-not-override-1wyde52"
+    >
+      <div
+        class="ant-card-body"
+      >
+        <div
+          class="flex flex-col space-y-4"
+        >
+          <div>
+            <input
+              class="ant-input ant-input-lg css-dev-only-do-not-override-1wyde52 ant-input-outlined !mb-4"
+              data-testid="search-input"
+              placeholder="Search Username..."
+              type="text"
+              value=""
+            />
+            <button
+              class="ant-btn css-dev-only-do-not-override-1wyde52 ant-btn-primary ant-btn-color-primary ant-btn-variant-solid ant-btn-lg w-full bg-blue-200"
+              data-testid="search-button"
+              type="button"
+            >
+              <span>
+                Search
+              </span>
+            </button>
+          </div>
+          <div />
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

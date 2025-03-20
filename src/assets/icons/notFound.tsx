@@ -4,6 +4,7 @@ const NotFoundIcon = () => (
     height={"240px"}
     width={"240px"}
     viewBox="0 0 750 500"
+    data-testid="not-found-icon"
   >
     <g id="freepik--background-complete--inject-11">
       <polygon
