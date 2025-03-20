@@ -16,7 +16,7 @@ const RepositoryList: React.FC<RepositoryListProps> = ({ username }) => {
       {isLoading ? (
         <Space className="w-full" direction="vertical">
           {Array.from({ length: 3 }).map((_, index) => (
-            <Card key={index}>
+            <Card key={index} data-testid="skeleton">
               <Skeleton active />
             </Card>
           ))}

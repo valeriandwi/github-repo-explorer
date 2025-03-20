@@ -2,7 +2,7 @@ import { GITHUB_TOKEN } from "@/constants/constants";
 
 export const fetcher = async <T>({
   url,
-  headers = {},
+  headers,
 }: {
   url: string;
   headers?: HeadersInit;

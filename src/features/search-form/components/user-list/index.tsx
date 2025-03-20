@@ -18,7 +18,9 @@ const UserList: React.FC<UserListProps> = ({ isLoading, searchedUser }) => {
       </span>
       <div className="mt-2">
         {isLoading ? (
-          <Skeleton />
+          <div data-testid="skeleton">
+            <Skeleton />
+          </div>
         ) : (
           data?.items &&
           data?.items?.length > 0 &&
@@ -27,6 +29,7 @@ const UserList: React.FC<UserListProps> = ({ isLoading, searchedUser }) => {
               key={value.login}
               collapsible="header"
               className="!mt-2"
+              data-testid="user-list"
               items={[
                 {
                   key: "1",

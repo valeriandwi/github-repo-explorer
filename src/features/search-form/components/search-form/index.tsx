@@ -21,6 +21,7 @@ const SearchUserForm: React.FC<SearchUserFormProps> = ({
         className="!mb-4"
         onChange={(e) => setSearchValue(e.target.value)}
         disabled={isLoading}
+        data-testid="search-input"
       />
       <Button
         size="large"
@@ -28,6 +29,7 @@ const SearchUserForm: React.FC<SearchUserFormProps> = ({
         onClick={onSearchButtonClick}
         loading={isLoading}
         type="primary"
+        data-testid="search-button"
       >
         Search
       </Button>
